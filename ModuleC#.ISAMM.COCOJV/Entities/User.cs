@@ -2,6 +2,10 @@
 {
     public class User : BaseEntity
     {
+        public User()
+        {
+            
+        }
         public User(string userName, string password, int age, string? email, string? region)
         {
             UserName = userName;

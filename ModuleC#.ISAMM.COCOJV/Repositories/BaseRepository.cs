@@ -21,10 +21,12 @@ namespace ModuleC_.ISAMM.COCOJV.Repositories
             return _entityList.FirstOrDefault(u => u.Id == id);
         }
 
-        public void Post(TEntity entity) 
+        public Guid Post(TEntity entity)
         {
+            entity.Id = Guid.NewGuid();
             entity.CreatedDate = DateTime.UtcNow;
             _entityList.Add(entity);
+            return entity.Id;
         }
 
         public void Put(TEntity entity) 

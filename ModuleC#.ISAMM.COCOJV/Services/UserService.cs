@@ -31,12 +31,42 @@ namespace ModuleC_.ISAMM.COCOJV.Services
             return new GetUserByIdResponse(user);
         }
 
-        // --> TO DO: 
-        /*
-         * POST 
-         * PUT
-         * Delete
-         */
-        // ----------------
+
+        public GetUserByIdResponse Post(PostUserRequest dto)
+        {
+            Guid userId = _userRepository.Post(new User
+            {
+                UserName = dto.UserName,
+                Password = dto.Password,
+                Age = dto.Age,
+                Email = dto.Email,
+                Region = dto.Region,
+            });
+
+            return GetById(userId);
+        }
+
+        public GetUserByIdResponse Put(PutUserRequest dto)
+        {
+            User user = _userRepository.GetById(dto.Id);
+
+            if (user == null)
+            {
+                return null; 
+            }
+
+            user.Age = dto.Age;
+            user.Email = dto.Email;
+            user.Region = dto.Region;
+
+            _userRepository.Put(user);
+
+            return GetById(user.Id);
+        }
+
+        public void Delete(Guid id)
+        {
+            _userRepository.Delete(id);
+        }
     }
 }

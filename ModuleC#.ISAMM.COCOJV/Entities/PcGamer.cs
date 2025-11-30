@@ -2,9 +2,12 @@
 {
     public class PcGamer : BaseEntity
     {
-        public PcGamer(Guid iD, string? brand, string? cpuConfig, string? gpuConfig, string? storage, OsType oS)
+        public PcGamer()
         {
-            ID = iD;
+            
+        }
+        public PcGamer(string? brand, string? cpuConfig, string? gpuConfig, string? storage, OsType oS)
+        {
             Brand = brand;
             CpuConfig = cpuConfig;
             GpuConfig = gpuConfig;
@@ -12,7 +15,6 @@
             OS = oS;
         }
 
-        public Guid ID { get; set; }
         public string? Brand { get; set; }
         public string? CpuConfig { get; set; }
         public string? GpuConfig { get; set; }
